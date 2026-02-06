@@ -8,42 +8,63 @@
     <style>
         body {
             margin: 0; padding: 0; display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; 
+            background: linear-gradient(135deg, #fff9c4 0%, #fbc02d 100%);
             font-family: 'Segoe UI', sans-serif; overflow-x: hidden;
         }
         .card {
-            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2); padding: 2.5rem; border-radius: 20px;
-            text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-            max-width: 450px; width: 90%; z-index: 10; color: white;
+            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4); padding: 2.5rem; border-radius: 24px;
+            text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 450px; width: 90%; z-index: 10; color: #444;
         }
         .profile-pic {
-            width: 150px; height: 150px; border-radius: 50%; border: 5px solid white;
-            object-fit: cover; margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            width: 160px; height: 160px; border-radius: 50%; border: 5px solid #fff;
+            object-fit: cover; margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        h1 { font-size: 2.2rem; margin: 0.5rem 0; }
-        p { font-size: 1.1rem; opacity: 0.9; line-height: 1.5; }
+        h1 { font-size: 2.4rem; margin: 0.5rem 0; color: #ef6c00; }
+        p { font-size: 1.1rem; opacity: 0.9; line-height: 1.6; color: #333; }
         .btn {
-            margin-top: 1.5rem; padding: 12px 25px; background: #fff; color: #764ba2;
+            margin-top: 1.5rem; padding: 12px 28px; background: #ef6c00; color: #fff;
             border: none; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(239, 108, 0, 0.3);
         }
-        .btn:hover { transform: scale(1.1); background: #f0f0f0; }
+        .btn:hover { transform: scale(1.1); background: #ff9800; }
     </style>
 </head>
 <body>
 
+    <audio id="birthday-song" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-To-You.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="card">
         <img src="photo.jpg" alt="Birthday Person" class="profile-pic">
-        <h1>Happy Birthday, [Name]!</h1>
-        <p>To an amazing person who makes every day brighter. May your year be full of new adventures and great memories!</p>
-        <button class="btn" onclick="celebrate()">Tap for Magic ✨</button>
+        
+        <h1>Happy Birthday, Maria Lourinza Mae!</h1>
+        
+        <p>Yellow, your color, which also resonates of the person that you are to me. Yellow isn't about being loud; it's about that steady, warm glow that makes a room feel like home and at peace. Thank you for being my person and for bringing that specific kind of light into my world. Know that life is a lot better because I have you in it. Happy Birthday! :)</p>
+        
+        <button class="btn" id="magic-btn" onclick="celebrate()">Tap for Magic ✨</button>
     </div>
 
     <script>
         function celebrate() {
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            // Play the music
+            const song = document.getElementById('birthday-song');
+            song.play();
+
+            // Trigger confetti
+            confetti({ 
+                particleCount: 150, 
+                spread: 70, 
+                origin: { y: 0.6 },
+                colors: ['#fbc02d', '#ffffff', '#ffeb3b', '#ef6c00'] 
+            });
+
+            // Optional: Change button text after clicking
+            document.getElementById('magic-btn').innerText = "Enjoy your day! 🥳";
         }
-        window.onload = () => setTimeout(celebrate, 500);
     </script>
 </body>
 </html>
